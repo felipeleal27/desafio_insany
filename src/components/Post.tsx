@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { format } from 'date-fns';
+import styled from 'styled-components';
 
 // Definindo o tipo do post
 interface PostProps {
@@ -11,50 +12,96 @@ interface PostProps {
     authorAvatarUrl: string;
     authorName: string;
     content: {
-      rendered: string; // Certifique-se de que isso seja uma string
+      rendered: string;
     };
   };
 }
 
+const PostCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+`;
+
+const PostImage = styled(Image)`
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+`;
+
+const PostDescription = styled.div`
+  padding: 16px;
+`;
+
+const PostMeta = styled.div`
+  font-size: 14px;
+  color: #6c757d;
+`;
+
+const PostTitle = styled.h3`
+  margin: 8px 0;
+  font-size: 18px;
+  color: #333;
+`;
+
+const PostAuthor = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+`;
+
+const PostContent = styled.div`
+  margin-top: 12px;
+  font-size: 14px;
+  color: #555;
+`;
+
 const Post: React.FC<PostProps> = ({ post }) => {
-  // Formatação da data
   const formattedDate = format(new Date(post.date), 'MMMM yyyy');
 
   return (
-    <div className="post-card">
+    <PostCard>
       {/* Imagem do post */}
-      <Image
+      <PostImage
         src={post.imageUrl}
         alt={post.title}
-        width={300}
-        height={200}
-        objectFit="cover"
+        width={600}
+        height={400}
       />
-      <div className="post-description">
+      <PostDescription>
         {/* Topo da descrição com a categoria e a data */}
-        <div className="post-meta">
+        <PostMeta>
           <span className="post-category">Business</span> - 
           <span className="post-date">{formattedDate}</span>
-        </div>
+        </PostMeta>
         {/* Título do post */}
-        <h3 className="post-title">{post.title}</h3>
+        <PostTitle>{post.title}</PostTitle>
         {/* Autor */}
-        <div className="post-author">
+        <PostAuthor>
           <img
             className="author-avatar"
             src={post.authorAvatarUrl}
             alt={post.authorName}
           />
           <span>{post.authorName}</span>
-        </div>
+        </PostAuthor>
         {/* Conteúdo do post */}
-        {/* Garantir que post.content.rendered é uma string */}
-        <div
-          className="post-content"
-          dangerouslySetInnerHTML={{ __html: String(post.content.rendered) }}
+        <PostContent
+          dangerouslySetInnerHTML={{ __html: post.content.rendered }}
         />
-      </div>
-    </div>
+      </PostDescription>
+    </PostCard>
   );
 };
 
