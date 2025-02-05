@@ -50,3 +50,33 @@ h1, h2, h3, h4, p {
   font-family: 'Roboto', sans-serif;
   src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap') format('woff2');
 }
+
+.linkHeader {
+  --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+}
+
+.hoverLinkHeader {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity, 1)) 
+}
+
+.bg-footer {
+  background-image: url('/images/bg_footer.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 300px;
+}
+
+.input-class {
+  color: black; 
+  background-color: white; 
+  opacity: 1;
+}
+
+input {
+  color: black !important;
+}
+
+

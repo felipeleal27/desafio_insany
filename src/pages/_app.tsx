@@ -1,5 +1,6 @@
 import '../styles/globals.css';
-import { AppProps } from 'next/app'; // Importando a tipagem AppProps do Next.js
+import { AppProps } from 'next/app';
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;
