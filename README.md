@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎯 Desafio Insany - Next.js + TypeScript + Sanity CMS + Styled Components + Context API/Jotai
 
-## Getting Started
+Este repositório contém a solução para o desafio Insany, desenvolvido com **Next.js** e **TypeScript**, integrando **Sanity CMS** para a gestão de conteúdo, **Styled Components** para estilização e **Context API** ou **Jotai** para gerenciamento de estado.
 
-First, run the development server:
+## ⚙️ Tecnologias Usadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Next.js**: Framework React para a construção de aplicações web com funcionalidades de server-side rendering e geração de sites estáticos.
+- **TypeScript**: Superset do JavaScript, adicionando tipagem estática ao código.
+- **Sanity CMS**: Sistema de gerenciamento de conteúdo (CMS) headless.
+- **Styled Components**: Biblioteca para estilização de componentes utilizando CSS-in-JS.
+- **Context API / Jotai**: Ferramentas para gerenciamento de estado em React.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Funcionalidades
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Criação de páginas dinâmicas utilizando conteúdo do **Sanity CMS**.
+- Estilização de componentes com **Styled Components**, garantindo uma UI consistente.
+- Gerenciamento de estado da aplicação utilizando **Context API** ou **Jotai**.
+- Suporte a **TypeScript**, garantindo maior robustez no desenvolvimento.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Como Rodar o Projeto
 
-## Learn More
+Para rodar o projeto, siga os passos abaixo:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clonar o Repositório e Instalar Dependências**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   Abra o terminal e execute os seguintes comandos:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   git clone https://github.com/felipeleal27/desafio_insany.git
+   cd desafio_insany
+   npm install
+   npm run dev
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
