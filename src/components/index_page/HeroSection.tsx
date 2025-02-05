@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SimpleButton } from "../SimpleButton";
-
-
 
 const HeroSection = () => {
   const [isEmpresa, setIsEmpresa] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const [formData, setFormData] = useState({
     nome: "",
@@ -21,7 +20,20 @@ const HeroSection = () => {
     cnpj: "",
   });
 
-  const handleTipoChange = (event: { target: { value: string; }; }) => {
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize(); // Set initial value
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const handleTipoChange = (event: { target: { value: string } }) => {
     setIsEmpresa(event.target.value === "empresa");
   };
 
@@ -37,7 +49,6 @@ const HeroSection = () => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return regex.test(email);
   };
-
 
   const validateCNPJ = (cnpj: string) => {
     const regex = /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/; // Formato XX.XXX.XXX/XXXX-XX
@@ -84,28 +95,40 @@ const HeroSection = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="max-w-6xl w-full flex flex-col md:flex-row gap-8">
+      <div
+        className={`max-w-6xl w-full flex flex-col ${
+          isMobile ? "gap-4" : "md:flex-row gap-8"
+        }`}
+      >
         {/* Parte Esquerda */}
-        <div className="flex-1 flex flex-col justify-center">
-        <SimpleButton label="Tecnologia disruptiva" />
+        <div className="flex-1 flex flex-col justify-center items-center md:items-start">
+          <SimpleButton label="Tecnologia disruptiva" />
 
-          <h1 className="text-6xl font-bold text-white mb-4">
+          <h1
+            className={`font-bold text-white mb-4 text-center md:text-left ${
+              isMobile ? "text-4xl" : "text-6xl"
+            }`}
+          >
             Conta digital que não é só uma conta digital.
           </h1>
-          <p className="text-white mb-6">
+          <p className="text-white mb-6 text-center md:text-left">
             Pellentesque rutrum turpis non est turpis pretium morbi urna.
           </p>
           <div className="w-10 border-t-2 border-blue-500 mb-6"></div>
-          <div className="flex flex-wrap gap-8">
-            <div className="flex flex-col">
+          <div
+            className={`flex ${
+              isMobile ? "flex-col" : "flex-wrap"
+            } gap-8 justify-center md:justify-start`}
+          >
+            <div className="flex flex-col items-center md:items-start">
               <span className="text-2xl font-bold text-white">120</span>
               <span className="text-white">Projeto realizado 2021</span>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col items-center md:items-start">
               <span className="text-2xl font-bold text-white">12</span>
               <span className="text-white">Escritórios no Brasil</span>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col items-center md:items-start">
               <span className="text-2xl font-bold text-white">15mi</span>
               <span className="text-white">Faturamento 2021</span>
             </div>
@@ -159,7 +182,9 @@ const HeroSection = () => {
                   onChange={handleChange}
                   className="border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                {errors.cnpj && <p className="text-red-500 text-sm">{errors.cnpj}</p>}
+                {errors.cnpj && (
+                  <p className="text-red-500 text-sm">{errors.cnpj}</p>
+                )}
 
                 <input
                   type="email"
@@ -169,7 +194,9 @@ const HeroSection = () => {
                   onChange={handleChange}
                   className="border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                {errors.email && (
+                  <p className="text-red-500 text-sm">{errors.email}</p>
+                )}
 
                 <input
                   type="text"
@@ -179,7 +206,9 @@ const HeroSection = () => {
                   onChange={handleChange}
                   className="border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                {errors.celular && <p className="text-red-500 text-sm">{errors.celular}</p>}
+                {errors.celular && (
+                  <p className="text-red-500 text-sm">{errors.celular}</p>
+                )}
 
                 <button
                   type="submit"
@@ -198,7 +227,9 @@ const HeroSection = () => {
                   onChange={handleChange}
                   className="border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                {errors.nome && <p className="text-red-500 text-sm">{errors.nome}</p>}
+                {errors.nome && (
+                  <p className="text-red-500 text-sm">{errors.nome}</p>
+                )}
 
                 <input
                   type="email"
@@ -208,7 +239,9 @@ const HeroSection = () => {
                   onChange={handleChange}
                   className="border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                {errors.email && (
+                  <p className="text-red-500 text-sm">{errors.email}</p>
+                )}
 
                 <input
                   type="text"
@@ -218,7 +251,9 @@ const HeroSection = () => {
                   onChange={handleChange}
                   className="border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                {errors.celular && <p className="text-red-500 text-sm">{errors.celular}</p>}
+                {errors.celular && (
+                  <p className="text-red-500 text-sm">{errors.celular}</p>
+                )}
 
                 <button
                   type="submit"
@@ -248,7 +283,9 @@ const HeroSection = () => {
             >
               <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
             </svg>
-            <span className="text-gray-700 text-sm">Seus dados estão seguros</span>
+            <span className="text-gray-700 text-sm">
+              Seus dados estão seguros
+            </span>
           </div>
         </div>
       </div>
